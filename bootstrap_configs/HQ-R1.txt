@@ -1,0 +1,22 @@
+en
+conf t
+hostname HQ-R1
+
+ip domain name ansible-mega-lab.local
+
+username admin privilege 15 secret TestPassword123!
+crypto key generate rsa modulus 2048
+ip ssh version 2
+
+int e0/0
+ip add 192.168.99.1 255.255.255.0
+no shutdown
+exit
+
+
+line vty 0 4
+transport input ssh
+login local
+end
+
+wr
