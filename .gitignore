@@ -1,0 +1,6 @@
+get_lab_details.py
+.env
+venv/
+unused/
+*.unl
+__pycache__/

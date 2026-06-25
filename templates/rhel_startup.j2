@@ -1,0 +1,15 @@
+#cloud-config
+
+hostname: {{ name }}
+
+users:
+  - name: {{ username }}
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: wheel
+    plain_text_passwd: "{{ password }}"
+    lock_passwd: false
+
+runcmd:
+  - nmcli con mod ens4 ipv4.addresses {{ mgmt_ip }}/{{ prefix_length }}
+  - nmcli con mod ens4 ipv4.method manual
+  - nmcli con up ens4

@@ -1,0 +1,7 @@
+set pcname {{ hostname }}
+
+{% if ip_address %}
+ip {{ ip_address }}/{{ prefix_length }} {{ default_gateway }}
+{% endif %}
+
+save
